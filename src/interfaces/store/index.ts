@@ -1,9 +1,8 @@
-export interface IUserCreate {
+export interface IStoreCreate {
     name: string
     email: string
-    cpf:string
+    cnpj:string
     password:string
-    idade: number
     isadm:boolean
     address:string
     cep:string
@@ -14,13 +13,13 @@ export interface IUserCreate {
     
 }
 
-export interface IUser extends IUserCreate{
+export interface IStore extends IStoreCreate{
     id:string
     create_at:Date
     update_at:Date
 }
 
-export interface AddresUser{
+export interface AddresStoreCreate{
     address:string
     cep:string
     number:number
@@ -29,16 +28,8 @@ export interface AddresUser{
     state:string
     user_id:string
 }
-export interface IAddress extends AddresUser{
+export interface AddresStore extends AddresStoreCreate{
     id:string
     create_at:Date
     update_at:Date
-}
-
-export interface UpdateUser{
-    id:string
-    name: string
-    email: string
-    password:string
-    idade: number
 }

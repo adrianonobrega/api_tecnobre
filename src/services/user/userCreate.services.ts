@@ -12,16 +12,23 @@ const userCreateService = async ({name, email,cpf,password,idade,isadm,address,c
 
     const users = await userRepository.find()
 
-    const emailAlreadyExists = users.find(user => user.email === email)
+    const alreadyExistsEmail = users.find((user) => user.email === email)
+ 
+    const alreadyExistsCpf = users.find((user) => user.cpf === cpf)
+   
+    if(alreadyExistsEmail){
+      throw new Error("Email already exists")
+    }
 
-    if (emailAlreadyExists) {
-        throw new Error("Email already exists")
+    if(alreadyExistsCpf){
+      throw new Error ("Cpf already exists")
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User()
 
+    user.id = user.id
     user.name = name
     user.email = email
     user.cpf = cpf
@@ -30,6 +37,8 @@ const userCreateService = async ({name, email,cpf,password,idade,isadm,address,c
     user.isadm = isadm
     userRepository.create(user)
     userRepository.save(user)
+    console.log(user.id,"id")
+    
 
     const addressAll = new addressUser()
     addressAll.cep = cep
@@ -38,18 +47,25 @@ const userCreateService = async ({name, email,cpf,password,idade,isadm,address,c
     addressAll.district = district
     addressAll.state = state
     addressAll.city = city
+    addressAll.user = user
     addressRepository.create(addressAll)
     addressRepository.save(addressAll)
 
-
     const result = {
-        id: user.id,
-        email: user.email,
-        idade: user.idade,
-        isadm: user.isadm,
-        endereco:addressAll
-    }
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      address: addressAll.address,
+      number: addressAll.number,
+      cep: addressAll.cep,
 
+      district: addressAll.district,
+      city: addressAll.city,
+      state: addressAll.state,
+      created_at: addressAll.create_at,
+      update_at: addressAll.update_at
+
+    }
     return result
 
 }

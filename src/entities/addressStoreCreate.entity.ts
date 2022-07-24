@@ -1,10 +1,10 @@
 import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, ManyToOne } from "typeorm";
-import { User } from "./user.entity";
 
 
-@Entity("user_address")
 
-export class addressUser{
+@Entity("stores_address")
+
+export class addressStore{
 
     @PrimaryGeneratedColumn("uuid")
      id:string
@@ -33,9 +33,10 @@ export class addressUser{
 
     @UpdateDateColumn()
     update_at:Date
+    store: any;
 
-    @ManyToOne(() => User, user => user.address,{
-        onDelete:"CASCADE"
-    })
-    user:User
+    // @ManyToOne(() => User, user => user.address,{
+    //     onDelete:"CASCADE"
+    // })
+    // user:User
 }

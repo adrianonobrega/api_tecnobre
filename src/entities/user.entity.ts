@@ -1,9 +1,13 @@
-import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import { addressUser } from "./addressUser.entity";
 
 
 @Entity("user")
 
 export class User{
+    
+ 
+  
 
     @PrimaryGeneratedColumn("uuid")
      id:string
@@ -31,4 +35,8 @@ export class User{
 
     @UpdateDateColumn()
     update_at:Date
+
+    @OneToMany(() => addressUser, address => address.user, {eager:true})
+    address: addressUser[]
+    
 }
