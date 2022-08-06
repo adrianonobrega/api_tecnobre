@@ -33,3 +33,12 @@ export interface AddresStore extends AddresStoreCreate{
     create_at:Date
     update_at:Date
 }
+
+export interface StoreUpdate   {
+    id: string
+    name: string
+    email: string
+    cnpj: string
+    password: string
+  
+  }
