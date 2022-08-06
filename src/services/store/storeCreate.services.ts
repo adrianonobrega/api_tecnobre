@@ -22,23 +22,10 @@ const storeCreateService = async ({name, email,cnpj,password,isadm,address,cep,n
     }
 
     if(alreadyExistsCpf){
-      throw new Error ("Cpf already exists")
+      throw new Error ("CNPJ already exists")
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    const store = new Store()
-
-    // store.id = user.id
-    store.name = name
-    store.email = email
-    store.cnpj = cnpj
-    store.password = hashedPassword
-    store.isadm = isadm
-    userRepository.create(store)
-    userRepository.save(store)
-   
-    
 
     const addressAll = new addressStore()
     addressAll.cep = cep
@@ -47,9 +34,24 @@ const storeCreateService = async ({name, email,cnpj,password,isadm,address,cep,n
     addressAll.district = district
     addressAll.state = state
     addressAll.city = city
-    // addressAll.user = user
+   
     addressRepository.create(addressAll)
     addressRepository.save(addressAll)
+
+    const store = new Store()
+
+    
+    store.name = name
+    store.email = email
+    store.cnpj = cnpj
+    store.password = hashedPassword
+    store.isadm = isadm
+    store.address = addressAll
+    userRepository.create(store)
+    userRepository.save(store)
+
+
+
 
     const result = {
       id: store.id,
