@@ -1,10 +1,9 @@
 import { Request,Response } from "express"
-import storeCreateService from "../../services/store/storeCreate.services"
-import storeListService from "../../services/store/storeList.services"
-import storeListOne from "../../services/store/storeLisrtOne.services"
-import storeDeleteServices from "../../services/store/storeDelete.services"
-import updateStoreServices from "../../services/store/storeUpdate.services"
-
+import { createProductService } from "../../services/product/productCreate.services"
+import listProductServices from "../../services/product/productList.services"
+import productListOneServices from "../../services/product/productListOne.services"
+import productUpdateService from "../../services/product/productUpdate.services"
+import productDeleteServices from "../../services/product/productDelete.services"
 
 
 const productCreateController = async (req: Request, res: Response) => {
@@ -12,9 +11,9 @@ const productCreateController = async (req: Request, res: Response) => {
  try{
 
         
-        const {name, email,cnpj,password,isadm,address,cep,number,district,city,state} = req.body
+        const {store_id,name, description, brand, category, image, price} = req.body
     
-    const product = console.log("olá")
+    const product = await createProductService({store_id,name, description, brand, category, image, price})
 
     res.status(201).json(product)
     }
@@ -32,7 +31,7 @@ const productCreateController = async (req: Request, res: Response) => {
 const productListController = async (req: Request, res: Response) => {
 
    try{
-    const product = console.log("olá")
+    const product = await listProductServices()
 
     res.status(200).json(product)
    }
@@ -50,7 +49,7 @@ const productListOneController = async (req: Request, res: Response) => {
 
     try{
     const {id} = req.params
-    const product = console.log("olá")
+    const product = await productListOneServices(id)
 
     res.status(200).json(product)
     }
@@ -69,8 +68,8 @@ const productListOneController = async (req: Request, res: Response) => {
     try{
     
     const {id} = req.params
-    const {name,email, cnpj, password} = req.body
-    const product = console.log("olá")
+    const {name, description, brand, category, image, price} = req.body
+    const product = productUpdateService({id,name, description, brand, category, image, price})
 
     res.status(200).json(product)
 
@@ -89,7 +88,7 @@ const productListOneController = async (req: Request, res: Response) => {
 
     try{
         const {id} = req.params
-        const product = console.log("olá")
+        const product = await productDeleteServices(id)
 
     res.status(204).json(product)
     }

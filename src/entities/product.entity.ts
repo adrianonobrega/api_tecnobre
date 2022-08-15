@@ -28,10 +28,10 @@ export class Product{
     category: string
 
     @Column()
-    image: number
+    image: string
 
     @Column()
-    price: boolean
+    price: number
 
     @CreateDateColumn()
     create_at:Date
