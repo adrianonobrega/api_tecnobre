@@ -11,6 +11,8 @@ import { User } from "./user.entity";
 export class Order{
     
  
+    
+ 
   
 
     @PrimaryGeneratedColumn("uuid")
@@ -20,7 +22,7 @@ export class Order{
     status: string
 
     @Column()
-    total_price: string
+    total_price: number
 
     @CreateDateColumn()
     create_at:Date
@@ -40,5 +42,7 @@ export class Order{
     @OneToOne(() => Os, os => os.store,{eager:true, onDelete:'CASCADE'})
    @JoinColumn()
    os:Os
+  requestAll: Product;
+    newRequest: Store;
     
 }

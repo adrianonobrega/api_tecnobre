@@ -39,10 +39,10 @@ export class Store{
    @JoinColumn()
    address:addressStore
 
-   @OneToMany(() => Product, product => product.store,{eager:true})
+   @OneToMany(() => Product, product => product.store,{eager:true,onDelete:'CASCADE'})
    product: Product[]
 
-   @OneToMany(() => Order , order => order.store)
+   @OneToMany(() => Order , order => order.store,{onDelete:'CASCADE'})
    order: Order[]
 
    @OneToMany(() => Os, os => os.store,{onDelete:'CASCADE'})

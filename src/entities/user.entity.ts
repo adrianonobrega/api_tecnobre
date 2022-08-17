@@ -46,5 +46,6 @@ export class User{
 
     @OneToMany(() => Os , os => os.user)
     os:Os[]
+  newUser: Order;
     
 }

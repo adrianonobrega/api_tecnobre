@@ -65,7 +65,8 @@ const storeCreateService = async ({name, email,cnpj,password,isadm,address,cep,n
       city: addressAll.city,
       state: addressAll.state,
       created_at: addressAll.create_at,
-      update_at: addressAll.update_at
+      update_at: addressAll.update_at,
+      
 
     }
     return result
