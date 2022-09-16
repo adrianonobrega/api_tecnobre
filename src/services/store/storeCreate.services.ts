@@ -1,6 +1,6 @@
 import { IUserCreate, IUser } from "../../interfaces/user";
 import { AppDataSource } from "../../database";
-import { addressStore } from "../../entities/addressStoreCreate.entity";
+import { addressStore } from "../../entities/addressStore.entity";
 import { Store } from "../../entities/store.entity";
 import * as bcrypt from "bcryptjs";
 import { AddresStore } from "../../interfaces/store";

@@ -1,7 +1,7 @@
 import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, ManyToMany } from "typeorm";
 import { Os } from "./Os.entity";
 import { Store } from "./store.entity";
-import { Order } from "./userOrder.entity";
+import { Order } from "./request.entity";
 
 
 
@@ -39,7 +39,7 @@ export class Product{
     @UpdateDateColumn()
     update_at:Date
 
-    @ManyToOne(() => Store, store => store.product,{onDelete:'CASCADE'})
+    @ManyToOne(() => Store, store => store.product,{nullable: false,onDelete:'CASCADE'})
     store:Store;
     
     @ManyToMany(() => Order,order => order.product)

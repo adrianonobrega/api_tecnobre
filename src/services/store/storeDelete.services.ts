@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../database"
-import { addressStore } from "../../entities/addressStoreCreate.entity"
+import { addressStore } from "../../entities/addressStore.entity"
 import { Store } from "../../entities/store.entity"
 
 

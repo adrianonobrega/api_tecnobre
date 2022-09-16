@@ -66,6 +66,7 @@ const userCreateService = async ({name, email,cpf,password,idade,isadm,address,c
       update_at: addressAll.update_at
 
     }
+    console.log(result)
     return result
 
 }

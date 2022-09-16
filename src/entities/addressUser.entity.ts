@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, ManyToOne } from "typeorm";
+import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, ManyToOne, OneToMany } from "typeorm";
+import { Order } from "./request.entity";
 import { User } from "./user.entity";
 
 
@@ -34,8 +35,9 @@ export class addressUser{
     @UpdateDateColumn()
     update_at:Date
 
-    @ManyToOne(() => User, user => user.address,{
-        onDelete:"CASCADE"
-    })
+    @OneToMany(() => Order, order => order.address)
+    orders: Order[]
+
+    @ManyToOne(() => User, user => user.address,{onDelete:'CASCADE'} )
     user:User
 }

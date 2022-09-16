@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../database"
-import { Order } from "../../entities/userOrder.entity"
+import { Order } from "../../entities/request.entity"
 
 
 
@@ -16,7 +16,7 @@ const requestDeleteServices = async (id: string) => {
 
 
   if(!request){
-    throw new Error("Request not found")
+    throw new Error("Cart not found")
 }
 
 

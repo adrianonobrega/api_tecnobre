@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
 import { addressUser } from "./addressUser.entity";
-import { Os } from "./Os.entity";
-import { Order } from "./userOrder.entity";
+// import { Os } from "./Os.entity";
+import { Order } from "./request.entity";
 
 
 @Entity("user")
@@ -41,11 +41,11 @@ export class User{
     @OneToMany(() => addressUser, address => address.user, {eager:true})
     address: addressUser[]
 
-    @OneToMany(() => Order, order => order.user)
+    @OneToMany(() => Order, order => Order)
     order: Order[]
 
-    @OneToMany(() => Os , os => os.user)
-    os:Os[]
-  newUser: Order;
+    // @OneToMany(() => Os , os => Os)
+    // os:Os[]
+  // newUser: Order;
     
 }

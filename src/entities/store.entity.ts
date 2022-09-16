@@ -1,7 +1,7 @@
-import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany } from "typeorm";
-import { addressStore } from "./addressStoreCreate.entity";
+import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany,ManyToOne } from "typeorm";
+import { addressStore } from "./addressStore.entity";
 import { Product } from "./product.entity";
-import { Order } from "./userOrder.entity";
+import { Order } from "./request.entity";
 import { Os } from "./Os.entity";
 
 
@@ -44,6 +44,7 @@ export class Store{
 
    @OneToMany(() => Order , order => order.store,{onDelete:'CASCADE'})
    order: Order[]
+
 
    @OneToMany(() => Os, os => os.store,{onDelete:'CASCADE'})
    os:Os[]

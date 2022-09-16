@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, ManyToOne } from "typeorm";
+import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, ManyToOne, OneToOne,JoinColumn } from "typeorm";
+import { Store } from "./store.entity";
 
 
 
@@ -35,8 +36,5 @@ export class addressStore{
     update_at:Date
     store: any;
 
-    // @ManyToOne(() => User, user => user.address,{
-    //     onDelete:"CASCADE"
-    // })
-    // user:User
+  
 }

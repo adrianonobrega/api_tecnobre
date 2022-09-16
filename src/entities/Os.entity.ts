@@ -28,8 +28,8 @@ export class Os{
     @ManyToOne(() => Store, store => store.os)
     store:Store
 
-    @ManyToOne(() => User,user => user.os)
-    user:User
+    // @ManyToOne(() => User,user => user.os)
+    // user:User
 
     
 }
