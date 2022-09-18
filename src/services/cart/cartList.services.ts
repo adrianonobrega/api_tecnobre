@@ -7,8 +7,10 @@ export const requestListService = async () => {
 
   const cartAll = await cartRepository.find()
 
+  console.log(cartAll)
 
   const cart = cartAll.map((ord) => {
+    console.log(ord)
     const obj = {
       id: ord?.id,
       status: ord?.status,

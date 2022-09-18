@@ -7,41 +7,50 @@ import { User } from "../../entities/user.entity"
 
 
 export const createOsService = async ({ id, name_equipament, description, status, image}: OsRequest) => {
-  const OsRepository = AppDataSource.getRepository(Os)
-  const storeRepository = AppDataSource.getRepository(Store)
-  const userRepository = AppDataSource.getRepository(User)
+  const osRepository = AppDataSource.getRepository(Os);
+  const storesRepository = AppDataSource.getRepository(Store);
 
-  const store = await storeRepository.findOne({where: {id: id}})
+  const store = await storesRepository.findOneBy({ id: id })
 
-  if (!store) {
-    throw new Error("Store not found")
-  }
+    if(!store){
+      throw new Error("Loja não existe")
+    }
 
-
-
-  const osAll = new Os();
-  osAll.id = osAll.id
-  osAll.name_equipament = name_equipament
-  osAll.description = description
-  osAll.description = status
-  osAll.imagem = image
-  osAll.status = status
-  osAll.store = store
-
-  OsRepository.create(osAll)
-  await OsRepository.save(osAll)
-
-  const result = {
+    const newOs = new Os();
+    newOs.id = newOs.id
+    newOs.name_equipament = name_equipament
+    newOs.description = description
+    newOs.status = status;
+    newOs.store = store;
     
-    id: osAll.id,
-    name_equipament: osAll.name_equipament,
-    description: osAll.description,
-    status: osAll.status,
-    total_price: osAll.total_price,
-    image: osAll.imagem,
-    store: osAll.store
-    
-  }
+    await osRepository.save(newOs);
 
-  return result
+    const osRep = [await osRepository.findOneBy({ id: newOs.id })]
+
+    const os = osRep.map((ord) => {
+      const obj = {
+        id: ord?.id,
+        name_equipament: name_equipament,
+        description: description,
+        solution:"...",
+        imagem:image,
+        status: ord?.status,
+        total_price: ord?.total_price,
+        
+        
+        store: {
+          id: ord?.store.id,
+          name: ord?.store.name,
+          email: ord?.store.email,
+          cnpj: ord?.store.cnpj,
+        },
+        
+        address: ord?.store.address,
+        created_at: ord?.create_at,
+        updated_at: ord?.update_at
+      }
+      return obj
+    })
+    return os
+
 }

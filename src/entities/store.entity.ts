@@ -39,13 +39,12 @@ export class Store{
    @JoinColumn()
    address:addressStore
 
-   @OneToMany(() => Product, product => product.store,{onDelete:'CASCADE'})
-   product: Product[]
+   @OneToMany(() => Os, os => os.store,{onDelete:'CASCADE'})
+   os:Os[]
 
    @OneToMany(() => Cart , cart => cart.store,{onDelete:'CASCADE'})
    order: Cart[]
-
-
-   @OneToMany(() => Os, os => os.store,{eager:true,onDelete:'CASCADE'})
-   os:Os[]
+   
+   @OneToMany(() => Product, product => product.store,{onDelete:'CASCADE'})
+   product: Product[]
 }

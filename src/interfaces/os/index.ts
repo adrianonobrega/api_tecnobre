@@ -1,3 +1,5 @@
+import { Store } from "../../entities/store.entity"
+
 export interface OsRequest {
     
     id:string
@@ -5,7 +7,7 @@ export interface OsRequest {
     description: string
     status:string
     image:string
-    
+
   
     
    

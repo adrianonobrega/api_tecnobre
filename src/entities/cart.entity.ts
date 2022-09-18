@@ -46,8 +46,8 @@ export class Cart{
     @ManyToOne(() => addressUser, address => address.cart,{eager: true,onDelete:'CASCADE'})
     address: addressUser
 
-    @ManyToMany(() => Os, os => os.cart,{eager:true})
-    @JoinTable()
-    os:Os[]
+    // @ManyToMany(() => Os, os => os.cart,{eager:true})
+    // @JoinTable()
+    // os:Os[]
 
 }

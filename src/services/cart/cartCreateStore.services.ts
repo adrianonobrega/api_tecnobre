@@ -17,7 +17,7 @@ export const cartCreateStoreService = async ({id,status,total_price,products,os}
     const newOrder = new Cart();
     newOrder.status = status;
     newOrder.product = products
-    newOrder.os = os
+    // newOrder.os = os
     newOrder.store = store;
     newOrder.total_price = total_price;
     await cartRepository.save(newOrder);
@@ -37,7 +37,7 @@ export const cartCreateStoreService = async ({id,status,total_price,products,os}
           email: ord?.store.email,
           cnpj: ord?.store.cnpj,
         },
-        os:ord?.os,
+        // os:ord?.os,
         address: ord?.store.address,
         created_at: ord?.create_at,
         updated_at: ord?.update_at

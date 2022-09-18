@@ -1,5 +1,6 @@
 import { Request,Response } from "express"
 import { createOsService } from "../../services/os/osCreate.services"
+import { osListService } from "../../services/os/osList.services"
 
 
 const osCreateController = async (req: Request, res: Response) => {
@@ -23,23 +24,23 @@ const osCreateController = async (req: Request, res: Response) => {
     }
 }
 
-// // src/controllers/user/userList.controller.ts
-// const productListController = async (req: Request, res: Response) => {
 
-//    try{
-//     const product = await listProductServices()
+const osListController = async (req: Request, res: Response) => {
 
-//     res.status(200).json(product)
-//    }
+   try{
+    const os = await osListService()
 
-//     catch(error){
-//         if(error instanceof Error){
-//             return res.status(400).json({
-//                 message: error.message
-//             })
-//         }
-//     }
-// }
+    res.status(200).json(os)
+   }
+
+    catch(error){
+        if(error instanceof Error){
+            return res.status(400).json({
+                message: error.message
+            })
+        }
+    }
+}
 
 // const productListOneController = async (req: Request, res: Response) => {
 
@@ -99,4 +100,4 @@ const osCreateController = async (req: Request, res: Response) => {
 //  }
 
 
-export {osCreateController}
+export {osCreateController,osListController}

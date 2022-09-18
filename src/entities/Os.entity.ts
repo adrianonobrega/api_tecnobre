@@ -10,7 +10,7 @@ import { Cart } from "./cart.entity";
 export class Os{
     
  
-  
+    
 
     @PrimaryGeneratedColumn("uuid")
      id:string
@@ -39,11 +39,11 @@ export class Os{
     @UpdateDateColumn()
     update_at:Date
     
-    @ManyToOne(() => Store, store => store.os)
+    @ManyToOne(() => Store, store => store.os,{eager: true,onDelete:'CASCADE'})
     store:Store
 
-    @ManyToMany(() => Cart,cart => cart.os)
-    cart:Cart[]
+    // @ManyToMany(() => Cart,cart => cart.os)
+    // cart:Cart[]
 
     
 }

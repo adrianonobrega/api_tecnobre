@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class createTables1663358875000 implements MigrationInterface {
-    name = 'createTables1663358875000'
+export class createTables1663523651646 implements MigrationInterface {
+    name = 'createTables1663523651646'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "stores_address" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "address" character varying NOT NULL, "cep" character varying NOT NULL, "number" integer NOT NULL, "district" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "create_at" TIMESTAMP NOT NULL DEFAULT now(), "update_at" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "PK_25fa52e503fd77e0a5004a381ce" PRIMARY KEY ("id"))`);
@@ -14,10 +14,7 @@ export class createTables1663358875000 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE "cart_product_product" ("cartId" uuid NOT NULL, "productId" uuid NOT NULL, CONSTRAINT "PK_3fe167ea5ec46c18adc550e9419" PRIMARY KEY ("cartId", "productId"))`);
         await queryRunner.query(`CREATE INDEX "IDX_79eff0740cf8d0afd9cf339b83" ON "cart_product_product" ("cartId") `);
         await queryRunner.query(`CREATE INDEX "IDX_85d9796b308d382c39d3503181" ON "cart_product_product" ("productId") `);
-        await queryRunner.query(`CREATE TABLE "cart_os_os" ("cartId" uuid NOT NULL, "osId" uuid NOT NULL, CONSTRAINT "PK_f595f46aaa6d1d3e684126e4596" PRIMARY KEY ("cartId", "osId"))`);
-        await queryRunner.query(`CREATE INDEX "IDX_6d3543c2726bea581526bdd62b" ON "cart_os_os" ("cartId") `);
-        await queryRunner.query(`CREATE INDEX "IDX_c914f104a05f50ba03c414461f" ON "cart_os_os" ("osId") `);
-        await queryRunner.query(`ALTER TABLE "os" ADD CONSTRAINT "FK_b33cfce9c3e1f0fb9ebdf902d17" FOREIGN KEY ("storeId") REFERENCES "store"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE "os" ADD CONSTRAINT "FK_b33cfce9c3e1f0fb9ebdf902d17" FOREIGN KEY ("storeId") REFERENCES "store"("id") ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "store" ADD CONSTRAINT "FK_cd32344f427e665d01b9fb1cd1a" FOREIGN KEY ("addressId") REFERENCES "stores_address"("id") ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "product" ADD CONSTRAINT "FK_32eaa54ad96b26459158464379a" FOREIGN KEY ("storeId") REFERENCES "store"("id") ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "cart" ADD CONSTRAINT "FK_756f53ab9466eb52a52619ee019" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
@@ -26,13 +23,9 @@ export class createTables1663358875000 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "user_address" ADD CONSTRAINT "FK_1abd8badc4a127b0f357d9ecbc2" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "cart_product_product" ADD CONSTRAINT "FK_79eff0740cf8d0afd9cf339b839" FOREIGN KEY ("cartId") REFERENCES "cart"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
         await queryRunner.query(`ALTER TABLE "cart_product_product" ADD CONSTRAINT "FK_85d9796b308d382c39d35031818" FOREIGN KEY ("productId") REFERENCES "product"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
-        await queryRunner.query(`ALTER TABLE "cart_os_os" ADD CONSTRAINT "FK_6d3543c2726bea581526bdd62b8" FOREIGN KEY ("cartId") REFERENCES "cart"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
-        await queryRunner.query(`ALTER TABLE "cart_os_os" ADD CONSTRAINT "FK_c914f104a05f50ba03c414461fd" FOREIGN KEY ("osId") REFERENCES "os"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`ALTER TABLE "cart_os_os" DROP CONSTRAINT "FK_c914f104a05f50ba03c414461fd"`);
-        await queryRunner.query(`ALTER TABLE "cart_os_os" DROP CONSTRAINT "FK_6d3543c2726bea581526bdd62b8"`);
         await queryRunner.query(`ALTER TABLE "cart_product_product" DROP CONSTRAINT "FK_85d9796b308d382c39d35031818"`);
         await queryRunner.query(`ALTER TABLE "cart_product_product" DROP CONSTRAINT "FK_79eff0740cf8d0afd9cf339b839"`);
         await queryRunner.query(`ALTER TABLE "user_address" DROP CONSTRAINT "FK_1abd8badc4a127b0f357d9ecbc2"`);
@@ -42,9 +35,6 @@ export class createTables1663358875000 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "product" DROP CONSTRAINT "FK_32eaa54ad96b26459158464379a"`);
         await queryRunner.query(`ALTER TABLE "store" DROP CONSTRAINT "FK_cd32344f427e665d01b9fb1cd1a"`);
         await queryRunner.query(`ALTER TABLE "os" DROP CONSTRAINT "FK_b33cfce9c3e1f0fb9ebdf902d17"`);
-        await queryRunner.query(`DROP INDEX "public"."IDX_c914f104a05f50ba03c414461f"`);
-        await queryRunner.query(`DROP INDEX "public"."IDX_6d3543c2726bea581526bdd62b"`);
-        await queryRunner.query(`DROP TABLE "cart_os_os"`);
         await queryRunner.query(`DROP INDEX "public"."IDX_85d9796b308d382c39d3503181"`);
         await queryRunner.query(`DROP INDEX "public"."IDX_79eff0740cf8d0afd9cf339b83"`);
         await queryRunner.query(`DROP TABLE "cart_product_product"`);
