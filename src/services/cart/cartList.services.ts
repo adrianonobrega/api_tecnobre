@@ -1,9 +1,9 @@
 
 import { AppDataSource } from "../../database";
-import { Order } from "../../entities/request.entity";
+import { Cart } from "../../entities/cart.entity";
 
 export const requestListService = async () => {
-  const cartRepository = AppDataSource.getRepository(Order)
+  const cartRepository = AppDataSource.getRepository(Cart)
 
   const cartAll = await cartRepository.find()
 

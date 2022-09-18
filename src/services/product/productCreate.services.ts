@@ -33,6 +33,7 @@ export const createProductService = async ({ store_id, name, description, brand,
   productAll.store = store
   
   
+  
   productRepository.create(productAll)
   await productRepository.save(productAll)
 

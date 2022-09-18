@@ -60,7 +60,7 @@ const storeCreateService = async ({name, email,cnpj,password,isadm,address,cep,n
       address: addressAll.address,
       number: addressAll.number,
       cep: addressAll.cep,
-
+      producys:store.product,
       district: addressAll.district,
       city: addressAll.city,
       state: addressAll.state,

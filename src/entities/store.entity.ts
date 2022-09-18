@@ -1,7 +1,7 @@
 import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany,ManyToOne } from "typeorm";
 import { addressStore } from "./addressStore.entity";
 import { Product } from "./product.entity";
-import { Order } from "./request.entity";
+import { Cart } from "./cart.entity";
 import { Os } from "./Os.entity";
 
 
@@ -39,13 +39,13 @@ export class Store{
    @JoinColumn()
    address:addressStore
 
-   @OneToMany(() => Product, product => product.store,{eager:true,onDelete:'CASCADE'})
+   @OneToMany(() => Product, product => product.store,{onDelete:'CASCADE'})
    product: Product[]
 
-   @OneToMany(() => Order , order => order.store,{onDelete:'CASCADE'})
-   order: Order[]
+   @OneToMany(() => Cart , cart => cart.store,{onDelete:'CASCADE'})
+   order: Cart[]
 
 
-   @OneToMany(() => Os, os => os.store,{onDelete:'CASCADE'})
+   @OneToMany(() => Os, os => os.store,{eager:true,onDelete:'CASCADE'})
    os:Os[]
 }

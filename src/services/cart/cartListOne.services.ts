@@ -1,17 +1,19 @@
 import { AppDataSource } from "../../database";
-import { Order } from "../../entities/request.entity";
+import { Cart } from "../../entities/cart.entity";
+
 
 export const cartListOneService = async (id: string) => {
-  const cartRepository = AppDataSource.getRepository(Order);
+  const cartRepository = AppDataSource.getRepository(Cart);
 
-  const cartOne = [await cartRepository.findOne({where: {id:id}})]
+  const cartOne = await cartRepository.findOne({where: {id:id}})
 
-  console.log(cartOne)
+  console.log(id.length,"length")
 
-  if(cartOne === null){
+  if(!cartOne){
     throw new Error("Invalid Store")
   }
-  const cart = cartOne.map((ord) => {
+ 
+  const cart = [cartOne].map((ord) => {
     const obj = {
       id: ord?.id,
       status: ord?.status,

@@ -1,11 +1,11 @@
 import { AppDataSource } from "../../database";
-import { Order } from "../../entities/request.entity";
-import { RequestUpdate } from "../../interfaces/cart";
+import { Cart } from "../../entities/cart.entity";
+import { CartUpdate } from "../../interfaces/cart";
 
- export const CartUpdateService = async ({id,status}:RequestUpdate) => {
-  const cartRepository = AppDataSource.getRepository(Order);
+ export const CartUpdateService = async ({id,status}:CartUpdate) => {
+  const cartRepository = AppDataSource.getRepository(Cart);
 
-  const cart = new Order();
+  const cart = new Cart();
 
   cart.id = cart.id
   cart.status = status

@@ -1,24 +1,23 @@
 import { CartStore } from "../../interfaces/cart"
 import { AppDataSource } from "../../database";
-import { Store } from "../../entities/store.entity";
+import { User } from "../../entities/user.entity";
 import { Cart } from "../../entities/cart.entity";
 
-export const cartCreateStoreService = async ({id,status,total_price,products,os}: CartStore) => {
+export const cartCreateUserService = async ({id,status,total_price,products}: CartStore) => {
 
     const cartRepository = AppDataSource.getRepository(Cart);
-    const storesRepository = AppDataSource.getRepository(Store);
+    const userRepository = AppDataSource.getRepository(User);
 
-    const store = await storesRepository.findOneBy({ id: id })
+    const user = await userRepository.findOneBy({ id: id })
 
-    if(!store){
-      throw new Error("Loja não existe")
+    if(!user){
+      throw new Error("Usuario não existe")
     }
     
     const newOrder = new Cart();
     newOrder.status = status;
     newOrder.product = products
-    newOrder.os = os
-    newOrder.store = store;
+    newOrder.user = user;
     newOrder.total_price = total_price;
     await cartRepository.save(newOrder);
 
@@ -30,15 +29,13 @@ export const cartCreateStoreService = async ({id,status,total_price,products,os}
         status: ord?.status,
         total_price: ord?.total_price,
         products: ord?.product,
-        
-        store: {
-          id: ord?.store.id,
-          name: ord?.store.name,
-          email: ord?.store.email,
-          cnpj: ord?.store.cnpj,
+        user: {
+          id: ord?.user.id,
+          name: ord?.user.name,
+          email: ord?.user.email,
+          cpf: ord?.user.cpf,
         },
-        os:ord?.os,
-        address: ord?.store.address,
+        address: ord?.user.address,
         created_at: ord?.create_at,
         updated_at: ord?.update_at
       }

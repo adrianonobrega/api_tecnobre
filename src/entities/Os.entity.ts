@@ -1,6 +1,7 @@
-import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne,ManyToMany } from "typeorm";
 import { Store } from "./store.entity";
 import { User } from "./user.entity";
+import { Cart } from "./cart.entity";
 
 
 
@@ -15,9 +16,21 @@ export class Os{
      id:string
 
     @Column()
-    status: string
+    name_equipament:string
 
     @Column()
+    description:string
+
+    @Column()
+    status: string
+
+    @Column({nullable:true})
+    solution:string
+
+    @Column({nullable:true})
+    imagem:string
+
+    @Column({nullable:true})
     total_price: string
 
     @CreateDateColumn()
@@ -25,11 +38,12 @@ export class Os{
 
     @UpdateDateColumn()
     update_at:Date
+    
     @ManyToOne(() => Store, store => store.os)
     store:Store
 
-    // @ManyToOne(() => User,user => user.os)
-    // user:User
+    @ManyToMany(() => Cart,cart => cart.os)
+    cart:Cart[]
 
     
 }

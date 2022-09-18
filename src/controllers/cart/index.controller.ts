@@ -1,18 +1,39 @@
 import { Request,Response } from "express"
-import { cartCreateService } from "../../services/cart/cartCreateStore.services"
+import { cartCreateStoreService } from "../../services/cart/cartCreateStore.services"
 import { cartListOneService } from "../../services/cart/cartListOne.services"
 import { requestListService } from "../../services/cart/cartList.services"
 import requestDeleteServices from "../../services/cart/cartDelete.services"
 import {CartUpdateService} from "../../services/cart/cartUpdate.services"
+import { cartCreateUserService } from "../../services/cart/cartCreateUser.services"
 
 
-const cartCreateController = async (req: Request, res: Response) => {
+const cartCreateStoreController = async (req: Request, res: Response) => {
     
     try{
         const { id } = req.params;
-        const {total_price,status, products } = req.body;
+        const {total_price,status, products,os } = req.body;
 
-        const newOrder = await cartCreateService({id,status,total_price,products});
+        const newOrder = await cartCreateStoreService({id,status,total_price,products,os});
+
+        return res.status(201).json(newOrder);
+       }
+   
+    catch(error){
+       if(error instanceof Error){
+           return res.status(400).json({
+               message: error.message
+               })
+           }
+       }
+   }
+
+   const cartCreateUserController = async (req: Request, res: Response) => {
+    
+    try{
+        const { id } = req.params;
+        const {total_price,status, products,os } = req.body;
+
+        const newOrder = await cartCreateUserService({id,status,total_price,products,os});
 
         return res.status(201).json(newOrder);
        }
@@ -100,4 +121,4 @@ const cartListOneController = async (req: Request, res: Response) => {
  }
 
 
-export {cartCreateController,cartDeleteController,cartListController,cartListOneController,cartUpdateController}
+export {cartCreateStoreController,cartCreateUserController,cartDeleteController,cartListController,cartListOneController,cartUpdateController}

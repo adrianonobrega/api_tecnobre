@@ -4,13 +4,14 @@ import { addressUser } from "./addressUser.entity";
 import { Product } from "./product.entity";
 import { Store } from "./store.entity";
 import { User } from "./user.entity";
+import { Os } from "./Os.entity";
 
 
 
 
-@Entity("order")
+@Entity("cart")
 
-export class Order{
+export class Cart{
     
  
     
@@ -32,17 +33,21 @@ export class Order{
     @UpdateDateColumn()
     update_at:Date
 
-    @ManyToOne(() => User, user => user.order,{ eager: true })
+    @ManyToOne(() => User, user => user.cart,{ eager: true })
     user:User
 
     @ManyToOne(() => Store, store => store.order,{eager: true,onDelete:'CASCADE'})
     store:Store
 
-    @ManyToMany(() => Product, product => product.order,{eager:true})
+    @ManyToMany(() => Product, product => product.cart,{eager:true})
     @JoinTable()
     product:Product[]
 
-    @ManyToOne(() => addressUser, address => address.orders,{eager: true,onDelete:'CASCADE'})
+    @ManyToOne(() => addressUser, address => address.cart,{eager: true,onDelete:'CASCADE'})
     address: addressUser
+
+    @ManyToMany(() => Os, os => os.cart,{eager:true})
+    @JoinTable()
+    os:Os[]
 
 }

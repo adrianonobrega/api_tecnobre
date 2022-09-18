@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, ManyToOne, OneToMany } from "typeorm";
-import { Order } from "./request.entity";
+import { Cart } from "./cart.entity";
 import { User } from "./user.entity";
 
 
@@ -35,8 +35,8 @@ export class addressUser{
     @UpdateDateColumn()
     update_at:Date
 
-    @OneToMany(() => Order, order => order.address)
-    orders: Order[]
+    @OneToMany(() => Cart, cart => cart.address)
+    cart: Cart[]
 
     @ManyToOne(() => User, user => user.address,{onDelete:'CASCADE'} )
     user:User

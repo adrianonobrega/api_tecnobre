@@ -1,11 +1,11 @@
 import { AppDataSource } from "../../database"
-import { Order } from "../../entities/request.entity"
+import { Cart } from "../../entities/cart.entity"
 
 
 
 
 const requestDeleteServices = async (id: string) => {
-    const requestRepository = AppDataSource.getRepository(Order)
+    const requestRepository = AppDataSource.getRepository(Cart)
 
 
   const request = await requestRepository.findOne({
@@ -22,7 +22,7 @@ const requestDeleteServices = async (id: string) => {
 
  
   
-await requestRepository.createQueryBuilder().delete().from(Order).where("id = :id", { id }).execute();
+await requestRepository.createQueryBuilder().delete().from(Cart).where("id = :id", { id }).execute();
 
   
 }
