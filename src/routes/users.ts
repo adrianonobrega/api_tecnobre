@@ -6,6 +6,7 @@ import { userListOneController } from "../controllers/user/user.controllers";
 import { userUpdateController } from "../controllers/user/user.controllers";
 import { userDeleteController } from "../controllers/user/user.controllers";
 
+
 export const userRoutes = Router()
 
 userRoutes.post("/",userCreateController)

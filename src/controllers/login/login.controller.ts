@@ -1,11 +1,12 @@
+import { Request,Response } from "express"
 import { loginServices } from "../../services/login/login.services"
 
-const LoginController = async (req: Request, res: Response) => {
+export const loginController = async (req: Request, res: Response) => {
     
     try{
            const {email,password} = req.body
        
-       const token = await userLoginServices({email,password})
+       const token = await loginServices({email,password})
    
        res.status(201).json(token)
        }
