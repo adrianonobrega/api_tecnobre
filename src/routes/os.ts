@@ -4,6 +4,7 @@ import { osListController } from "../controllers/os/os.controller";
 import { OsListOneController } from "../controllers/os/os.controller";
 import { OsUpdateController } from "../controllers/os/os.controller";
 import { osDeleteController } from "../controllers/os/os.controller";
+// import { authUser } from "../middlewares/authUser.middleware";
 
 export const osRoutes = Router()
 

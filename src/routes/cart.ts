@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { cartCreateStoreController } from "../controllers/cart/index.controller";
-import { cartListOneController } from "../controllers/cart/index.controller";
-import { cartListController } from "../controllers/cart/index.controller";
-import { cartDeleteController } from "../controllers/cart/index.controller";
-import { cartUpdateController } from "../controllers/cart/index.controller";
-import { cartCreateUserController } from "../controllers/cart/index.controller";
+import { cartCreateStoreController } from "../controllers/cart/cart.controller";
+import { cartListOneController } from "../controllers/cart/cart.controller";
+import { cartListController } from "../controllers/cart/cart.controller";
+import { cartDeleteController } from "../controllers/cart/cart.controller";
+import { cartUpdateController } from "../controllers/cart/cart.controller";
+import { cartCreateUserController } from "../controllers/cart/cart.controller";
 
 export const cartRoutes = Router()
 
