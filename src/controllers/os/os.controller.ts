@@ -1,6 +1,9 @@
 import { Request,Response } from "express"
 import { createOsService } from "../../services/os/osCreate.services"
 import { osListService } from "../../services/os/osList.services"
+import { OsOneListService } from "../../services/os/osListOne.services"
+import { OsUpdateService } from "../../services/os/osUpdate.services"
+import { osDeleteServices } from "../../services/os/osDelete.services"
 
 
 const osCreateController = async (req: Request, res: Response) => {
@@ -42,62 +45,61 @@ const osListController = async (req: Request, res: Response) => {
     }
 }
 
-// const productListOneController = async (req: Request, res: Response) => {
+const OsListOneController = async (req: Request, res: Response) => {
 
-//     try{
-//     const {id} = req.params
-//     const product = await productListOneServices(id)
+    try{
+    const {id} = req.params
+    const os = await OsOneListService(id)
 
-//     res.status(200).json(product)
-//     }
+    res.status(200).json(os)
+    }
  
-//      catch(error){
-//         if(error instanceof Error){
-//             return res.status(400).json({
-//                 message: error.message
-//             })
-//         }
-//      }
-//  }
+     catch(error){
+        if(error instanceof Error){
+            return res.status(400).json({
+                message: error.message
+            })
+        }
+     }
+ }
 
-//  const productUpdateController = async (req: Request, res: Response) => {
+ const OsUpdateController = async (req: Request, res: Response) => {
 
-//     try{
+    try{
     
-//     const {id} = req.params
-//     const {name, description, brand, category, image, price} = req.body
-//     const product = productUpdateService({id,name, description, brand, category, image, price})
+    const {id} = req.params
+    const {status,total_price,name_equipament,description,image} = req.body
+    const os = await OsUpdateService({id,status,total_price,name_equipament,description,image})
 
-//     res.status(200).json(product)
+    res.status(200).json(os)
 
-//     }
+    }
  
-//      catch(error){
-//         if(error instanceof Error){
-//             return res.status(400).json({
-//                 message: error.message
-//             })
-//         }
-//      }
-//  }
+     catch(error){
+        if(error instanceof Error){
+            return res.status(400).json({
+                message: error.message
+            })
+        }
+     }
+ }
 
-//  const productDeleteController = async (req: Request, res: Response) => {
+ const osDeleteController = async (req: Request, res: Response) => {
 
-//     try{
-//         const {id} = req.params
-//         const product = await productDeleteServices(id)
-
-//     res.status(204).json(product)
-//     }
+    try{
+        const {id} = req.params
+        const os = await osDeleteServices(id)
+        res.status(204).json(os)
+    }
  
-//      catch(error){
-//         if(error instanceof Error){
-//             return res.status(400).json({
-//                 message: error.message
-//             })
-//         }
-//      }
-//  }
+     catch(error){
+        if(error instanceof Error){
+            return res.status(400).json({
+                message: error.message
+            })
+        }
+     }
+ }
 
 
-export {osCreateController,osListController}
+export {osCreateController,osListController,OsListOneController,OsUpdateController,osDeleteController}

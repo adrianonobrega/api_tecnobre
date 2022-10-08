@@ -7,10 +7,9 @@ export const cartListOneService = async (id: string) => {
 
   const cartOne = await cartRepository.findOne({where: {id:id}})
 
-  console.log(id.length,"length")
 
   if(!cartOne){
-    throw new Error("Invalid Store")
+    throw new Error("Invalid cart")
   }
  
   const cart = [cartOne].map((ord) => {

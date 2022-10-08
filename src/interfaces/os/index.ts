@@ -6,15 +6,14 @@ export interface OsRequest {
     name_equipament: string
     description: string
     status:string
-    image:string
-
-  
-    
-   
-    
+    image:string 
 }
 
 export interface Os extends OsRequest {
     id: string
     created_at: Date
+}
+
+export interface OsUpdate extends OsRequest{
+    total_price:string
 }
