@@ -613,41 +613,41 @@ POST /carts <br>
 
 ### Exemplo de resposta:
 
-[
-	{
-		"id": "05dc3fa1-8691-476e-a353-f4dd8f219feb",
-		"status": "aguardando pagamento",
-		"total_price": "349.99",
-		"products": [
-			{
-				"id": "b4130048-a73b-40c2-bc3d-478394a92a8f",
-				"name": "garoto",
-				"description": "biscoito da sorte",
-				"brand": "dfsf",
-				"category": "biscoito",
-				"image": "dsafasdfsdffsdfsd",
-				"price": "1.99",
-				"created_at": "2022-10-14T18:06:30.262Z",
-				"updated_at": "2022-10-14T18:06:30.262Z"
-			}
-		],
-		"store": {
-			"id": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
-			"name": "adrInfo",
-			"address": {
-				"id": "fb194c24-6bb1-4966-86f6-4c59afefb3dd",
-				"address": "Rua alberto lima",
-				"cep": "22775550",
-				"number": 123,
-				"district": "rj",
-				"city": "Rio de janeiro",
-				"state": "jacarepagua
-				"created_at": "2022-10-14T17:40:20.016Z",
-				"updated_at": "2022-10-14T17:40:20.016Z"
-			}
-		},
-		"user": false
-	},
+	[
+		{
+			"id": "05dc3fa1-8691-476e-a353-f4dd8f219feb",
+			"status": "aguardando pagamento",
+			"total_price": "349.99",
+			"products": [
+				{
+					"id": "b4130048-a73b-40c2-bc3d-478394a92a8f",
+					"name": "garoto",
+					"description": "biscoito da sorte",
+					"brand": "dfsf",
+					"category": "biscoito",
+					"image": "dsafasdfsdffsdfsd",
+					"price": "1.99",
+					"created_at": "2022-10-14T18:06:30.262Z",
+					"updated_at": "2022-10-14T18:06:30.262Z"
+				}
+			],
+			"store": {
+				"id": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
+				"name": "adrInfo",
+				"address": {
+					"id": "fb194c24-6bb1-4966-86f6-4c59afefb3dd",
+					"address": "Rua alberto lima",
+					"cep": "22775550",
+					"number": 123,
+					"district": "rj",
+					"city": "Rio de janeiro",
+					"state": "jacarepagua
+					"created_at": "2022-10-14T17:40:20.016Z",
+					"updated_at": "2022-10-14T17:40:20.016Z"
+				}
+			},
+			"user": false
+		},]
 	
 	
 ## LISTAR APENAS UM PEDIDO
@@ -656,43 +656,43 @@ OBS: id do pedido cadastrado.
 
 ### Exemplo de resposta:
 
-[
-	{
-		"id": "05dc3fa1-8691-476e-a353-f4dd8f219feb",
-		"status": "aguardando pagamento",
-		"total_price": "349.99",
-		"products": [
-			{
-				"id": "b4130048-a73b-40c2-bc3d-478394a92a8f",
-				"name": "garoto",
-				"description": "biscoito da sorte",
-				"brand": "dfsf",
-				"category": "biscoito",
-				"image": "dsafasdfsdffsdfsd",
-				"price": "1.99",
-				"created_at": "2022-10-14T18:06:30.262Z",
-				"updated_at": "2022-10-14T18:06:30.262Z"
+	[
+		{
+			"id": "05dc3fa1-8691-476e-a353-f4dd8f219feb",
+			"status": "aguardando pagamento",
+			"total_price": "349.99",
+			"products": [
+				{
+					"id": "b4130048-a73b-40c2-bc3d-478394a92a8f",
+					"name": "garoto",
+					"description": "biscoito da sorte",
+					"brand": "dfsf",
+					"category": "biscoito",
+					"image": "dsafasdfsdffsdfsd",
+					"price": "1.99",
+					"created_at": "2022-10-14T18:06:30.262Z",
+					"updated_at": "2022-10-14T18:06:30.262Z"
+				}
+			],
+			"store": {
+				"id": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
+				"name": "adrInfo",
+				"email": "devadrianonobrega261@gmail.com",
+				"cnpj": "102.052.00.024/0001-25"
+			},
+			"address": {
+				"id": "fb194c24-6bb1-4966-86f6-4c59afefb3dd",
+				"address": "Rua alberto lima",
+				"cep": "22775550",
+				"number": 123,
+				"district": "rj",
+				"city": "Rio de janeiro",
+				"state": "cdd",
+				"created_at": "2022-10-14T17:40:20.016Z",
+				"updated_at": "2022-10-14T17:40:20.016Z"
 			}
-		],
-		"store": {
-			"id": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
-			"name": "adrInfo",
-			"email": "devadrianonobrega261@gmail.com",
-			"cnpj": "102.052.00.024/0001-25"
-		},
-		"address": {
-			"id": "fb194c24-6bb1-4966-86f6-4c59afefb3dd",
-			"address": "Rua alberto lima",
-			"cep": "22775550",
-			"number": 123,
-			"district": "rj",
-			"city": "Rio de janeiro",
-			"state": "cdd",
-			"created_at": "2022-10-14T17:40:20.016Z",
-			"updated_at": "2022-10-14T17:40:20.016Z"
 		}
-	}
-]
+	]
 
 ## Atualizar UM PEDIDO.
 PATCH carts/:id <br>
