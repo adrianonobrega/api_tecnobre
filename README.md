@@ -16,7 +16,7 @@
   
   	{
 	
-	"message": "Invalid Token"
+		"message": "Invalid Token"
 	
 	}
 	
@@ -48,19 +48,19 @@
 		
 	 }
    
-   {
+   	{
 	
 		"message": "Store not found"
 		
 	 }
    
-	  {
-	"message": "Invalid cart"
-  }
+	{
+		"message": "Invalid cart"
+  	}
 
-     {
-      "message": "invalid work order"
-    }
+     	{
+      		"message": "invalid work order"
+     	}
 	
 	
 ## EMAIL JA ESTA CADASTRADO POR ALGUM USUARIO
@@ -68,7 +68,7 @@
 
   	{
 	
-	"message": "Email already exists"
+		"message": "Email already exists"
 	
 	}
   
@@ -77,7 +77,7 @@
 
   	{
 	
-	"message": "CNPJ already exists"
+		"message": "CNPJ already exists"
 	
 	}
   
@@ -86,7 +86,7 @@
 
   	{
 	
-	"message": "CPF already exists"
+		"message": "CPF already exists"
 	
 	}
 	
@@ -191,10 +191,10 @@ POST /users/login
 
 ### Exemplo de requisição:
 
-	{
-		"email":"adrianonobrega26@gmail.com",
-		"password":"1234"
-	}
+		{
+			"email":"adrianonobrega26@gmail.com",
+			"password":"1234"
+		}
 
 ### Exemplo de resposta:
 200:OK
@@ -286,23 +286,23 @@ OBS: id do usuario cadastrado.
 ### Exemplo de requisição:
 
 	{
-	  "name":"Adriano Nóbrega Costa",
-	  "email":"adrianonobrega2611@gmail.com",
-	  "password":"12345"
+		  "name":"Adriano Nóbrega Costa",
+		  "email":"adrianonobrega2611@gmail.com",
+		  "password":"12345"
 	}
 
 ### Exemplo de resposta:
 200:OK
 
 	{
-    "id": "563476ef-e04f-4a88-a87d-279313188508",
-    "name": "Adriano Nóbrega Costa",
-    "email": "adrianonobrega2611@gmail.com",
-    "cpf": "339348665-62",
-    "birth_data": null,
-    "isadm": false,
-    "created_at": "2022-10-14T17:42:03.535Z",
-    "updated_at": "2022-10-14T17:43:26.133Z"
+	    "id": "563476ef-e04f-4a88-a87d-279313188508",
+	    "name": "Adriano Nóbrega Costa",
+	    "email": "adrianonobrega2611@gmail.com",
+	    "cpf": "339348665-62",
+	    "birth_data": null,
+	    "isadm": false,
+	    "created_at": "2022-10-14T17:42:03.535Z",
+	    "updated_at": "2022-10-14T17:43:26.133Z"
 	}
 	
 
@@ -324,29 +324,29 @@ OBS: id da loja cadastrada.
  ### Exemplo de requisição:
 
 	{
-    "description":"biscoito de chocolate crocante",
-    "name":"biscoito da sorte",
-    "brand":"garoto",
-    "category":"biscoito",
-    "image":"linkdasjhdfaskjgtdyasdtfasghdaTARGASVDFGFGAD",
-    "price":1.99
+	    "description":"biscoito de chocolate crocante",
+	    "name":"biscoito da sorte",
+	    "brand":"garoto",
+	    "category":"biscoito",
+	    "image":"linkdasjhdfaskjgtdyasdtfasghdaTARGASVDFGFGAD",
+	    "price":1.99
 	}
 
  ### Exemplo de resposta:
 201:Created
 
 		
-			{
+		{
 
-          "store": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
-          "id": "af535020-1f41-44db-b132-1126911ebd48",
-          "name": "biscoito da sorte",
-          "description": "biscoito de chocolate crocante",
-          "brand": "garoto",
-          "category": "biscoito",
-          "image": "linkdasjhdfaskjgtdyasdtfasghdaTARGASVDFGFGAD",
-          "price": 1.99
-			}
+		  "store": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
+		  "id": "af535020-1f41-44db-b132-1126911ebd48",
+		  "name": "biscoito da sorte",
+		  "description": "biscoito de chocolate crocante",
+		  "brand": "garoto",
+		  "category": "biscoito",
+		  "image": "linkdasjhdfaskjgtdyasdtfasghdaTARGASVDFGFGAD",
+		  "price": 1.99
+		}
 		
 
 
@@ -359,23 +359,23 @@ OBS: id do produto cadastrado.
 ### Exemplo de requisição:
 
 	{
-		"description":"biscoito de chocolate crocante",
-    "name":"biscoito da sorte",
-    "brand":"delVale",
-    "price":5.00
+	    "description":"biscoito de chocolate crocante",
+	    "name":"biscoito da sorte",
+	    "brand":"delVale",
+	    "price":5.00
 	}
 
 ### Exemplo de resposta:
 200:OK
 
 	{
-    "id": "af535020-1f41-44db-b132-1126911ebd48",
-    "name": "biscoito da sorte",
-    "description": "biscoito de chocolate crocante",
-    "brand": "delVale",
-    "image": "linkdasjhdfaskjgtdyasdtfasghdaTARGASVDFGFGAD",
-    "price": 5,
-    "category": "biscoito"
+	    "id": "af535020-1f41-44db-b132-1126911ebd48",
+	    "name": "biscoito da sorte",
+	    "description": "biscoito de chocolate crocante",
+	    "brand": "delVale",
+	    "image": "linkdasjhdfaskjgtdyasdtfasghdaTARGASVDFGFGAD",
+	    "price": 5,
+	    "category": "biscoito"
 	}
 	
 
@@ -394,58 +394,58 @@ OBS: id do usuario cadastrado.
 ### Exemplo de requisição:
 
 	{
-	"products": [
-        {
-            "id":"b4130048-a73b-40c2-bc3d-478394a92a8f", //OBS - id do produto
-            "quantity":2
-        }
-    ],
-	"status":"aguardando pagamento",
-    	"total_price":3
+		"products": [
+        			{
+				    "id":"b4130048-a73b-40c2-bc3d-478394a92a8f", //OBS - id do produto
+				    "quantity":2
+        			}
+    			    ],
+		"status":"aguardando pagamento",
+    		"total_price":3
 	}
 
 ### Exemplo de resposta:
 201:Created
 
 		[
-	{
-		"id": "f3c2daf6-daa8-474f-adf8-e911360fe70c",
-		"status": "Aguardando pagamento",
-		"total_price": "3.00",
-		"products": [
 			{
-				"id": "b4130048-a73b-40c2-bc3d-478394a92a8f",
-				"name": "garoto",
-				"description": "biscoito da sorte",
-				"brand": "dfsf",
-				"category": "biscoito",
-				"image": "dsafasdfsdffsdfsd",
-				"price": "1.99",
-				"created_at": "2022-10-14T18:06:30.262Z",
-				"updated_at": "2022-10-14T18:06:30.262Z"
-			}
-		],
-		"user": {
-			"id": "563476ef-e04f-4a88-a87d-279313188508",
-			"name": "Adriano Nóbrega Costa",
-			"email": "adrianonobrega2611@gmail.com",
-			"cpf": "339348665-62"
-		},
-		"address": [
-			{
-				"id": "5877f467-a692-4e9f-be6a-ee10c28c0a19",
-				"address": "Rua alberto lima",
-				"cep": "22775550",
-				"number": 123,
-				"district": "rj",
-				"city": "Rio de janeiro",
-				"state": "jacarepagua",
-				"created_at": "2022-10-14T17:42:03.541Z",
-				"updated_at": "2022-10-14T17:42:03.541Z"
-			}
-		],
-		"created_at": "2022-10-17T17:11:12.582Z",
-		"updated_at": "2022-10-17T17:11:12.582Z"
+				"id": "f3c2daf6-daa8-474f-adf8-e911360fe70c",
+				"status": "Aguardando pagamento",
+				"total_price": "3.00",
+				"products": [
+					{
+						"id": "b4130048-a73b-40c2-bc3d-478394a92a8f",
+						"name": "garoto",
+						"description": "biscoito da sorte",
+						"brand": "dfsf",
+						"category": "biscoito",
+						"image": "dsafasdfsdffsdfsd",
+						"price": "1.99",
+						"created_at": "2022-10-14T18:06:30.262Z",
+						"updated_at": "2022-10-14T18:06:30.262Z"
+					}
+				],
+				"user": {
+						"id": "563476ef-e04f-4a88-a87d-279313188508",
+						"name": "Adriano Nóbrega Costa",
+						"email": "adrianonobrega2611@gmail.com",
+						"cpf": "339348665-62"
+				},
+				"address": [
+					{
+						"id": "5877f467-a692-4e9f-be6a-ee10c28c0a19",
+						"address": "Rua alberto lima",
+						"cep": "22775550",
+						"number": 123,
+						"district": "rj",
+						"city": "Rio de janeiro",
+						"state": "jacarepagua",
+						"created_at": "2022-10-14T17:42:03.541Z",
+						"updated_at": "2022-10-14T17:42:03.541Z"
+					}
+				],
+				"created_at": "2022-10-17T17:11:12.582Z",
+				"updated_at": "2022-10-17T17:11:12.582Z"
 	}
 ]
 
@@ -566,17 +566,6 @@ OBS: id do pedido cadastrado.
 
 204:No Content
 
-
-
-
-
-
-
-
-
-
-
-
 #Ordem de serviço
 
 ## CRIAR UMA ORDEM DE SERVIÇO.
@@ -586,9 +575,9 @@ OBS: id do usuario cadastrado.
 ### Exemplo de requisição:
 
 	{
-	"name_equipament":"televisão modelo ax400",
-	"description":"não esta ligando",
-	"status":"Encaminhado para a assistencia tecnica."
+		"name_equipament":"televisão modelo ax400",
+		"description":"não esta ligando",
+		"status":"Encaminhado para a assistencia tecnica."
 	}
 
 ### Exemplo de resposta:
@@ -596,32 +585,32 @@ OBS: id do usuario cadastrado.
 
 		[
 		{
-		"id": "044d4c87-e894-4fe7-b046-8e9a40a55a21",
-		"name_equipament": "televisão modelo ax400",
-		"description": "não esta ligando",
-		"solution": "...",
-		"status": "Encaminhado para a assistencia tecnica.",
-		"total_price": null,
-		"user": {
-			"id": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
-			"name": "adrInfo",
-			"email": "devadrianonobrega261@gmail.com",
-			"cnpj": "102052000240001-25",
-			"cpf": null
-		},
-		"address": {
-			"id": "fb194c24-6bb1-4966-86f6-4c59afefb3dd",
-			"address": "Rua alberto lima",
-			"cep": "22775550",
-			"number": 123,
-			"district": "rj",
-			"city": "Rio de janeiro",
-			"state": "jacarepagua",
-			"created_at": "2022-10-14T17:40:20.016Z",
-			"updated_at": "2022-10-14T17:40:20.016Z"
-		},
-		"created_at": "2022-10-17T18:22:27.732Z",
-		"updated_at": "2022-10-17T18:22:27.732Z"
+			"id": "044d4c87-e894-4fe7-b046-8e9a40a55a21",
+			"name_equipament": "televisão modelo ax400",
+			"description": "não esta ligando",
+			"solution": "...",
+			"status": "Encaminhado para a assistencia tecnica.",
+			"total_price": null,
+			"user": {
+				"id": "7881e3bd-c616-4f9c-931b-f7b65c9650b8",
+				"name": "adrInfo",
+				"email": "devadrianonobrega261@gmail.com",
+				"cnpj": "102052000240001-25",
+				"cpf": null
+			},
+			"address": {
+				"id": "fb194c24-6bb1-4966-86f6-4c59afefb3dd",
+				"address": "Rua alberto lima",
+				"cep": "22775550",
+				"number": 123,
+				"district": "rj",
+				"city": "Rio de janeiro",
+				"state": "jacarepagua",
+				"created_at": "2022-10-14T17:40:20.016Z",
+				"updated_at": "2022-10-14T17:40:20.016Z"
+			},
+			"created_at": "2022-10-17T18:22:27.732Z",
+			"updated_at": "2022-10-17T18:22:27.732Z"
 		}
 	]
 	
@@ -633,31 +622,31 @@ GET /os/ <br>
 200:OK
 	[
 		{
-		"id": "f0cb254f-6843-41cd-a8ff-e076256b21fa",
-		"name_equipament": "televisão modelo ax400",
-		"description": "não esta ligando",
-		"status": "Encaminhado para a assistencia tecnica.",
-		"imagem": null,
-		"solution": null,
-		"total_price": null,
-		"user": {
-			"id": "e827da17-bf3d-421a-9201-b46e493e3b2a",
-			"name": "Adriano Nóbrega Costa",
-			"email": "adrianonobrega2611@gmail.com",
-			"cnpj": "102052000240001-25",
-			"cpf": null
-		},
-		"address": [
-			{
-				"id": "3a753b6f-ab56-45e5-bdcb-29dd290d4438",
-				"address": "Rua alberto lima",
-				"cep": "22775550",
-				"number": 123,
-				"district": "rj",
-				"city": "Rio de janeiro",
-				"state": "jacarepagua",
-				"created_at": "2022-10-18T16:12:03.751Z",
-				"updated_at": "2022-10-18T16:12:03.751Z"
+			"id": "f0cb254f-6843-41cd-a8ff-e076256b21fa",
+			"name_equipament": "televisão modelo ax400",
+			"description": "não esta ligando",
+			"status": "Encaminhado para a assistencia tecnica.",
+			"imagem": null,
+			"solution": null,
+			"total_price": null,
+			"user": {
+				"id": "e827da17-bf3d-421a-9201-b46e493e3b2a",
+				"name": "Adriano Nóbrega Costa",
+				"email": "adrianonobrega2611@gmail.com",
+				"cnpj": "102052000240001-25",
+				"cpf": null
+			},
+			"address": [
+				{
+					"id": "3a753b6f-ab56-45e5-bdcb-29dd290d4438",
+					"address": "Rua alberto lima",
+					"cep": "22775550",
+					"number": 123,
+					"district": "rj",
+					"city": "Rio de janeiro",
+					"state": "jacarepagua",
+					"created_at": "2022-10-18T16:12:03.751Z",
+					"updated_at": "2022-10-18T16:12:03.751Z"
 		},]
 	
 	
