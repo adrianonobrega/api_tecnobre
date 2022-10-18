@@ -21,6 +21,7 @@ export const OsOneListService = async (id:string) => {
             name: ord?.user.name,
             email: ord?.user.email,
             cnpj: ord?.user.cnpj,
+            cpf: ord?.user.cpf
           },
           address: ord?.user.address,
       

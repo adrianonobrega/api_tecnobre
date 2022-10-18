@@ -39,6 +39,7 @@ export const createOsService = async ({ id, name_equipament, description, status
           name: ord?.user.name,
           email: ord?.user.email,
           cnpj: ord?.user.cnpj,
+          cpf: ord?.user.cpf
         },
         address: ord?.user.address,
         created_at: ord?.created_at,

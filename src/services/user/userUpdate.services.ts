@@ -36,7 +36,7 @@ export const userUpdateService = async ({id,name, email,password,birth_data}: Up
         name : user.name,
         email :user.email,
         cpf : user.cpf,
-        idade : user.birth_data,
+        birth_data : user.birth_data,
         isadm : user.isadm,
         created_at: findUser.created_at,
         updated_at: findUser.updated_at
