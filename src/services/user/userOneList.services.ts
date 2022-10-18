@@ -1,21 +1,30 @@
 import { AppDataSource } from "../../database"
 import { User } from "../../entities/user.entity"
 
-const userOneListService = async (id:string) => {
+export const userOneListService = async (id:string) => {
 
     const userRepository = AppDataSource.getRepository(User)
 
-    const users = userRepository.findOne({
-        where: {
-            id:id
-        }
-    })
+    const findUser = await userRepository.findOne({where: {id:id}})
 
-    if(!users){
+    if(!findUser){
         throw new Error("User not found")
     }
-    
 
-    return users
+    const user = [findUser].map((user) => {
+        const obj = {
+          id:user.id,
+          name: user.name,
+          email: user.email,
+          cpf: user.cpf,
+          idade: user.birth_data,
+          isadm: user.isadm,
+          group: user.group,
+          address: user.address,
+          created_at: user.created_at,
+          updated_at:user.updated_at
+        }
+        return obj
+       })
+        return user
 }
-export default userOneListService

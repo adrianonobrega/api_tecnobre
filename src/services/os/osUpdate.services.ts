@@ -7,7 +7,7 @@ import { OsUpdate } from "../../interfaces/os";
   const osOne = await osRepository.findOne({where: {id:id}})
 
   if(!osOne){
-    throw new Error("Invalid ordem service")
+    throw new Error("invalid work order")
   }
 
   const os = new Os();

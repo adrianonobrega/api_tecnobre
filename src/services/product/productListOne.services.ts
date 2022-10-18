@@ -4,7 +4,7 @@ import { Product } from "../../entities/product.entity"
 
 
 
-const productListOneServices = async (id: string) => {
+export const productListOneServices = async (id: string) => {
   const productRepository = AppDataSource.getRepository(Product)
 
   const product = await productRepository.findOne({
@@ -20,4 +20,3 @@ const productListOneServices = async (id: string) => {
   return product
 }
 
-export default productListOneServices

@@ -1,19 +1,18 @@
 import { Request,Response } from "express"
-import userCreateService from "../../services/user/userCreate.services"
-import userListService from "../../services/user/userList.services"
-import userOneListService from "../../services/user/userOneList.services"
-import userUpdateService from "../../services/user/userUpdate.services"
-import userDeleteService from "../../services/user/userDelete.services"
+import {userCreateService} from "../../services/user/userCreate.services"
+import {userListService} from "../../services/user/userList.services"
+import {userOneListService} from "../../services/user/userOneList.services"
+import {userUpdateService} from "../../services/user/userUpdate.services"
+import {userDeleteService} from "../../services/user/userDelete.services"
 
 
 const userCreateController = async (req: Request, res: Response) => {
     
  try{
 
-        
-        const {name, email,cpf,password,idade,isadm,address,cep,number,district,city,state} = req.body
+    const {name, email,cpf,cnpj,password,birth_data,isAdm,address,cep,number,district,city,state} = req.body
     
-    const newUser = await userCreateService({name, email,cpf,password,idade,isadm,address,cep,number,district,city,state})
+    const newUser = await userCreateService({name, email,cpf,cnpj,password,birth_data,isAdm,address,cep,number,district,city,state})
 
     res.status(201).json(newUser)
     }
@@ -27,7 +26,6 @@ const userCreateController = async (req: Request, res: Response) => {
     }
 }
 
-// src/controllers/user/userList.controller.ts
 const userListController = async (req: Request, res: Response) => {
 
    try{
@@ -47,8 +45,9 @@ const userListController = async (req: Request, res: Response) => {
 
 const userListOneController = async (req: Request, res: Response) => {
 
-    const {id} = req.params
+    
     try{
+     const {id} = req.params   
      const users = await userOneListService(id)
  
      res.status(200).json(users)
@@ -68,11 +67,11 @@ const userListOneController = async (req: Request, res: Response) => {
     try{
    
          const {id} = req.params  
-         const {name, email,password,idade} = req.body
+         const {name, email,password,birth_data} = req.body
        
-       const newUser = await userUpdateService({id,name, email,password,idade})
+       const newUser = await userUpdateService({id,name, email,password,birth_data})
    
-       res.status(201).json(newUser)
+       res.status(200).json(newUser)
        }
    
     catch(error){
@@ -90,7 +89,7 @@ const userListOneController = async (req: Request, res: Response) => {
     try{
      const users = await userDeleteService(id)
  
-     res.status(200).json(users)
+     res.status(204).json(users)
     }
  
      catch(error){

@@ -1,7 +1,7 @@
 import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, ManyToMany } from "typeorm";
 import { Os } from "./Os.entity";
-import { Store } from "./store.entity";
 import { Cart } from "./cart.entity";
+import { User } from "./user.entity";
 
 
 
@@ -15,32 +15,32 @@ export class Product{
     @PrimaryGeneratedColumn("uuid")
      id:string
 
-    @Column()
+    @Column({length:"50"})
     name: string
 
-    @Column()
+    @Column({length:"300"})
     description: string
 
-    @Column()
+    @Column({length:"50"})
     brand: string
 
-    @Column()
+    @Column({length:"50"})
     category: string
 
-    @Column()
+    @Column({length:"300"})
     image: string
 
-    @Column()
+    @Column({type: "decimal", nullable: false})
     price: number
 
     @CreateDateColumn()
-    create_at:Date
+    created_at:Date
 
     @UpdateDateColumn()
-    update_at:Date
+    updated_at:Date
 
-    @ManyToOne(() => Store, store => store.product,{onDelete:'CASCADE'})
-    store:Store;
+    @ManyToOne(() => User, user => user.product,{onDelete:'CASCADE'})
+    user:User;
     
     @ManyToMany(() => Cart,cart => cart.product)
     cart:Cart[]

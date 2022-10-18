@@ -2,15 +2,15 @@
 import { ProductRequest } from "../../interfaces/product"
 import { AppDataSource } from "../../database"
 import { Product } from "../../entities/product.entity"
-import { Store } from "../../entities/store.entity"
+import { User } from "../../entities/user.entity"
 
 
 
 export const createProductService = async ({ store_id, name, description, brand, category, image, price }: ProductRequest) => {
   const productRepository = AppDataSource.getRepository(Product)
-  const storeRepository = AppDataSource.getRepository(Store)
+  const userRepository = AppDataSource.getRepository(User)
 
-  const store = await storeRepository.findOne({
+  const store = await userRepository.findOne({
     where: {
       id: store_id
     }
@@ -20,8 +20,6 @@ export const createProductService = async ({ store_id, name, description, brand,
     throw new Error("Store not found")
   }
 
-
-
   const productAll = new Product();
   productAll.id = productAll.id
   productAll.name = name
@@ -30,11 +28,7 @@ export const createProductService = async ({ store_id, name, description, brand,
   productAll.category = category
   productAll.image = image
   productAll.price = price
-  productAll.store = store
-  
-  
-  
-  productRepository.create(productAll)
+  productAll.user = store
   await productRepository.save(productAll)
 
   const result = {
@@ -45,7 +39,7 @@ export const createProductService = async ({ store_id, name, description, brand,
     brand: productAll.brand,
     category: productAll.category,
     image: productAll.image,
-    price: productAll.image,
+    price: productAll.price,
   }
 
   return result

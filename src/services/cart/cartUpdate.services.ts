@@ -5,6 +5,13 @@ import { CartUpdate } from "../../interfaces/cart";
  export const CartUpdateService = async ({id,status}:CartUpdate) => {
   const cartRepository = AppDataSource.getRepository(Cart);
 
+  const cartOne = await cartRepository.findOne({where: {id:id}})
+
+
+  if(!cartOne){
+    throw new Error("Invalid cart")
+  }
+
   const cart = new Cart();
 
   cart.id = cart.id

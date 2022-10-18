@@ -2,11 +2,12 @@ import { Product } from "../../entities/product.entity"
 import { Os } from "../../entities/Os.entity";
 
 export interface CartStore {
-   id: string;
+    id: string;
     status:string
     total_price: number;
     products: Product[];
     os:Os[]
+
     
 }
 

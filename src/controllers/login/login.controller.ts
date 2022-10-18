@@ -4,11 +4,11 @@ import { loginServices } from "../../services/login/login.services"
 export const loginController = async (req: Request, res: Response) => {
     
     try{
-           const {email,password} = req.body
+        const {email,password} = req.body
        
-       const token = await loginServices({email,password})
+        const token = await loginServices({email,password})
    
-       res.status(201).json(token)
+        res.status(201).json(token)
        }
    
     catch(error){

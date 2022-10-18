@@ -6,7 +6,7 @@ export const osDeleteServices = async (id: string) => {
     const osOne = await osRepository.findOne({where: {id:id}})
 
     if(!osOne){
-      throw new Error("ordem service not found")
+      throw new Error("invalid work order")
     }
     await osRepository.createQueryBuilder().delete().from(Os).where("id = :id", { id }).execute();
 }

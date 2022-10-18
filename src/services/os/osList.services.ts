@@ -8,7 +8,7 @@ export const osListService = async () => {
   const osAll = await osRepository.find()
 
   const cart = osAll.map((ord) => {
-    console.log(ord,"dasdjsa")
+    
     const obj = {
       id: ord?.id,
       name_equipament: ord.name_equipament,
@@ -19,13 +19,13 @@ export const osListService = async () => {
       
       total_price: ord?.total_price,
    
-      store: {
-        id: ord?.store.id,
-        name: ord?.store.name,
-        email: ord?.store.email,
-        cnpj: ord?.store.cnpj,
+      user: {
+        id: ord?.user.id,
+        name: ord?.user.name,
+        email: ord?.user.email,
+        cnpj: ord?.user.cnpj,
       },
-      address: ord?.store.address,
+      address: ord?.user.address,
   
     }
     return obj

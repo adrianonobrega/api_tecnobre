@@ -7,23 +7,18 @@ export const requestListService = async () => {
 
   const cartAll = await cartRepository.find()
 
-  console.log(cartAll)
-
   const cart = cartAll.map((ord) => {
-    console.log(ord)
+
     const obj = {
-      id: ord?.id,
+      id: ord.id,
       status: ord?.status,
       total_price: ord?.total_price,
       products: ord?.product,
-      store: {
-        id: ord?.store.id,
-        name: ord?.store.name,
-        email: ord?.store.email,
-        cnpj: ord?.store.cnpj,
+      user: ord.user === null ? false : {
+        id:ord.user.id,
+        name: ord.user.name,
+        address: ord.user.address
       },
-      address: ord?.store.address,
-  
     }
     return obj
   })

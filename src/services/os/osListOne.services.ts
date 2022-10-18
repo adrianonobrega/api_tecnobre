@@ -8,7 +8,7 @@ export const OsOneListService = async (id:string) => {
     const osOne = await osRepository.findOne({where: {id:id}})
     
     if(!osOne){
-        throw new Error("Invalid ordem service")
+        throw new Error("invalid work order")
       }
      
       const os = [osOne].map((ord) => {
@@ -16,13 +16,13 @@ export const OsOneListService = async (id:string) => {
           id: ord?.id,
           status: ord?.status,
           total_price: ord?.total_price,
-          store: {
-            id: ord?.store.id,
-            name: ord?.store.name,
-            email: ord?.store.email,
-            cnpj: ord?.store.cnpj,
+          user: {
+            id: ord?.user.id,
+            name: ord?.user.name,
+            email: ord?.user.email,
+            cnpj: ord?.user.cnpj,
           },
-          address: ord?.store.address,
+          address: ord?.user.address,
       
         }
         return obj

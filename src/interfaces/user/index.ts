@@ -3,14 +3,15 @@ export interface IUserCreate {
     email: string
     cpf:string
     password:string
-    idade: number
-    isadm:boolean
+    birth_data: string
+    isAdm:boolean
     address:string
     cep:string
     number:number
     district:string
     city:string
     state:string
+    cnpj:string
     
 }
 
@@ -40,5 +41,6 @@ export interface UpdateUser{
     name: string
     email: string
     password:string
-    idade: number
+    birth_data: string
+    
 }

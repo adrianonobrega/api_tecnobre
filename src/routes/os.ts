@@ -4,12 +4,13 @@ import { osListController } from "../controllers/os/os.controller";
 import { OsListOneController } from "../controllers/os/os.controller";
 import { OsUpdateController } from "../controllers/os/os.controller";
 import { osDeleteController } from "../controllers/os/os.controller";
-// import { authUser } from "../middlewares/authUser.middleware";
+import { authUser } from "../middleware/authUser";
+import { userAdmin } from "../middleware/userAdmin";
 
 export const osRoutes = Router()
 
-osRoutes.post("/:id",osCreateController)
-osRoutes.get("/",osListController)
-osRoutes.patch("/:id",OsUpdateController)
-osRoutes.delete("/:id",osDeleteController)
-osRoutes.get("/:id",OsListOneController)
+osRoutes.post("/:id",authUser,userAdmin,osCreateController)
+osRoutes.get("/",authUser,userAdmin,osListController)
+osRoutes.patch("/:id",authUser,userAdmin,OsUpdateController)
+osRoutes.delete("/:id",authUser,userAdmin,osDeleteController)
+osRoutes.get("/:id",authUser,OsListOneController)

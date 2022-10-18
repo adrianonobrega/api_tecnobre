@@ -18,13 +18,13 @@ export const cartListOneService = async (id: string) => {
       status: ord?.status,
       total_price: ord?.total_price,
       products: ord?.product,
-      store: {
-        id: ord?.store.id,
-        name: ord?.store.name,
-        email: ord?.store.email,
-        cnpj: ord?.store.cnpj,
+      user: {
+        id: ord?.user.id,
+        name: ord?.user.name,
+        email: ord?.user.email,
+        cnpj: ord?.user.cnpj,
       },
-      address: ord?.store.address,
+      address: ord?.user.address,
   
     }
     return obj

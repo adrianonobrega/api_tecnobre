@@ -1,7 +1,7 @@
 import { AppDataSource } from "../../database";
 import { Product } from "../../entities/product.entity";
 
-const listProductServices =  async () => {
+export const listProductServices =  async () => {
     const productRepository = AppDataSource.getRepository(Product)
     
 
@@ -12,5 +12,3 @@ const listProductServices =  async () => {
 
     return product
 }
-
-export default listProductServices

@@ -1,17 +1,17 @@
 import { Request,Response } from "express"
 import { createProductService } from "../../services/product/productCreate.services"
-import listProductServices from "../../services/product/productList.services"
-import productListOneServices from "../../services/product/productListOne.services"
-import productUpdateService from "../../services/product/productUpdate.services"
-import productDeleteServices from "../../services/product/productDelete.services"
+import {listProductServices} from "../../services/product/productList.services"
+import {productListOneServices} from "../../services/product/productListOne.services"
+import {productUpdateService} from "../../services/product/productUpdate.services"
+import {productDeleteServices} from "../../services/product/productDelete.services"
 
 
 const productCreateController = async (req: Request, res: Response) => {
     
  try{
 
-        
-        const {store_id,name, description, brand, category, image, price} = req.body
+        const {store_id} = req.params
+        const {name, description, brand, category, image, price} = req.body
     
     const product = await createProductService({store_id,name, description, brand, category, image, price})
 
@@ -69,7 +69,7 @@ const productListOneController = async (req: Request, res: Response) => {
     
     const {id} = req.params
     const {name, description, brand, category, image, price} = req.body
-    const product = productUpdateService({id,name, description, brand, category, image, price})
+    const product = await productUpdateService({id,name, description, brand, category, image, price})
 
     res.status(200).json(product)
 

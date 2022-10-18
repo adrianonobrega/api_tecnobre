@@ -1,27 +1,20 @@
 import { Entity, Column,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne,ManyToMany } from "typeorm";
-import { Store } from "./store.entity";
 import { User } from "./user.entity";
 import { Cart } from "./cart.entity";
 
-
-
 @Entity("os")
-
 export class Os{
     
- 
-    
-
     @PrimaryGeneratedColumn("uuid")
      id:string
 
-    @Column()
+    @Column({length:"100"})
     name_equipament:string
 
-    @Column()
+    @Column({length:"300"})
     description:string
 
-    @Column()
+    @Column({length:"65"})
     status: string
 
     @Column({nullable:true})
@@ -34,16 +27,12 @@ export class Os{
     total_price: string
 
     @CreateDateColumn()
-    create_at:Date
+    created_at:Date
 
     @UpdateDateColumn()
-    update_at:Date
+    updated_at:Date
     
-    @ManyToOne(() => Store, store => store.os,{eager: true,onDelete:'CASCADE'})
-    store:Store
-
-    // @ManyToMany(() => Cart,cart => cart.os)
-    // cart:Cart[]
-
+    @ManyToOne(() => User, user => user.os,{eager: true,onDelete:'CASCADE'})
+    user:User
     
 }

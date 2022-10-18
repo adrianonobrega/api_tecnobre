@@ -1,28 +1,26 @@
 import { OsRequest } from "../../interfaces/os"
 import { AppDataSource } from "../../database"
 import { Os } from "../../entities/Os.entity"
-import { Store } from "../../entities/store.entity"
 import { User } from "../../entities/user.entity"
 
 
 
 export const createOsService = async ({ id, name_equipament, description, status, image}: OsRequest) => {
   const osRepository = AppDataSource.getRepository(Os);
-  const storesRepository = AppDataSource.getRepository(Store);
+  const userRepository = AppDataSource.getRepository(User)
 
-  const store = await storesRepository.findOneBy({ id: id })
 
-    if(!store){
-      throw new Error("Loja não existe")
-    }
+  const user = await userRepository.findOneBy({id:id})
 
+  if(!user){
+      throw new Error("User not found")
+  }
     const newOs = new Os();
     newOs.id = newOs.id
     newOs.name_equipament = name_equipament
     newOs.description = description
     newOs.status = status;
-    newOs.store = store;
-    
+    newOs.user = user;
     await osRepository.save(newOs);
 
     const osRep = [await osRepository.findOneBy({ id: newOs.id })]
@@ -32,22 +30,19 @@ export const createOsService = async ({ id, name_equipament, description, status
         id: ord?.id,
         name_equipament: name_equipament,
         description: description,
-        solution:"...",
+        solution:"Aguardando avaliação do técnico",
         imagem:image,
         status: ord?.status,
         total_price: ord?.total_price,
-        
-        
-        store: {
-          id: ord?.store.id,
-          name: ord?.store.name,
-          email: ord?.store.email,
-          cnpj: ord?.store.cnpj,
+        user: {
+          id: ord?.user.id,
+          name: ord?.user.name,
+          email: ord?.user.email,
+          cnpj: ord?.user.cnpj,
         },
-        
-        address: ord?.store.address,
-        created_at: ord?.create_at,
-        updated_at: ord?.update_at
+        address: ord?.user.address,
+        created_at: ord?.created_at,
+        updated_at: ord?.updated_at
       }
       return obj
     })

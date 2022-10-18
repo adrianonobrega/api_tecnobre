@@ -4,39 +4,36 @@ import { addressUser } from "../../entities/addressUser.entity";
 import { AddresUser } from "../../interfaces/user";
 
 
-const AddresUserCreateServices = async ({user_id,address,cep,number,district,city,state}: AddresUser) => {
+export const AddresUserCreateServices = async ({user_id,address,cep,number,district,city,state}: AddresUser) => {
 
     const userRepository = AppDataSource.getRepository(User) 
     const addressRepository = AppDataSource.getRepository(addressUser)
 
-    const user = await userRepository.findOne({
+    const findUser = await userRepository.findOne({
       where: {
         id: user_id
       }
     })
   
-    if (!user) {
+    if (!findUser) {
       throw new Error("User not found")
     }
 
     const addressAll = new addressUser()
     addressAll.id = addressAll.id
-    addressAll.user = user
+    addressAll.user = findUser
     addressAll.cep = cep
     addressAll.address = address
     addressAll.number = number
     addressAll.district = district
     addressAll.state = state
     addressAll.city = city
-    addressAll.create_at = addressAll.create_at
-    addressAll.update_at = addressAll.update_at
-
-    
-    
+    addressAll.created_at = addressAll.created_at
+    addressAll.updated_at = addressAll.updated_at
 
     const result = {
       
-    user : user,
+    user : findUser,
     id : addressAll.id,
     cep : cep,
     address : address,
@@ -44,12 +41,10 @@ const AddresUserCreateServices = async ({user_id,address,cep,number,district,cit
     district : district,
     state : state,
     city : city,
-    create_at : addressAll.create_at,
-    update_at : addressAll.update_at
+    create_at : addressAll.created_at,
+    update_at : addressAll.updated_at
     }
     addressRepository.create(addressAll)
     addressRepository.save(addressAll)
     return result
-
 }
-export default AddresUserCreateServices

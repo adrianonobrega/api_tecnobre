@@ -2,18 +2,20 @@ import { CartStore } from "../../interfaces/cart"
 import { AppDataSource } from "../../database";
 import { User } from "../../entities/user.entity";
 import { Cart } from "../../entities/cart.entity";
+import { Product } from "../../entities/product.entity";
 
 export const cartCreateUserService = async ({id,status,total_price,products}: CartStore) => {
 
     const cartRepository = AppDataSource.getRepository(Cart);
     const userRepository = AppDataSource.getRepository(User);
+    const productRepository = AppDataSource.getRepository(Product);
 
     const user = await userRepository.findOneBy({ id: id })
 
     if(!user){
-      throw new Error("Usuario não existe")
+      throw new Error("User not found")
     }
-    
+
     const newOrder = new Cart();
     newOrder.status = status;
     newOrder.product = products
@@ -36,8 +38,8 @@ export const cartCreateUserService = async ({id,status,total_price,products}: Ca
           cpf: ord?.user.cpf,
         },
         address: ord?.user.address,
-        created_at: ord?.create_at,
-        updated_at: ord?.update_at
+        created_at: ord?.created_at,
+        updated_at: ord?.updated_at
       }
       return obj
     })
