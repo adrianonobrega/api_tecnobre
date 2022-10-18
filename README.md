@@ -58,9 +58,9 @@
 		"message": "Invalid cart"
   	}
 
-     	{
-      		"message": "invalid work order"
-     	}
+     {
+      	"message": "invalid work order"
+     }
 	
 	
 ## EMAIL JA ESTA CADASTRADO POR ALGUM USUARIO
