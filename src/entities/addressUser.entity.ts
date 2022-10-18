@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn,PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, ManyToOne, OneToMany } from "typeorm";
+import { Cart } from "./cart.entity";
+import { User } from "./user.entity";
 
 
 @Entity("user_address")
@@ -8,27 +10,34 @@ export class addressUser{
     @PrimaryGeneratedColumn("uuid")
      id:string
 
-    @Column()
+    @Column({length:"200"})
     address: string
 
-    @Column()
+    @Column({length:"8"})
     cep: string
 
     @Column()
     number: number
 
-    @Column()
+    @Column({length:"50"})
     district: string
 
-    @Column()
+    @Column({length:"50"})
     city: string
 
-    @Column()
+    @Column({length:"50"})
     state: string
 
+    
     @CreateDateColumn()
-    create_at:Date
+    created_at:Date
 
     @UpdateDateColumn()
-    update_at:Date
+    updated_at:Date
+
+    @OneToMany(() => Cart, cart => cart.address)
+    cart: Cart[]
+
+    @ManyToOne(() => User, user => user.address,{onDelete:'CASCADE'} )
+    user:User
 }
