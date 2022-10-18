@@ -22,6 +22,7 @@ export const cartListOneService = async (id: string) => {
         id: ord?.user.id,
         name: ord?.user.name,
         email: ord?.user.email,
+        cpf: ord.user.cpf,
         cnpj: ord?.user.cnpj,
       },
       address: ord?.user.address,

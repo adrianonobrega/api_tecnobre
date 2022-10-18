@@ -14,9 +14,11 @@ export const requestListService = async () => {
       status: ord?.status,
       total_price: ord?.total_price,
       products: ord?.product,
-      user: ord.user === null ? false : {
+      user: {
         id:ord.user.id,
         name: ord.user.name,
+        cpf: ord.user.cpf,
+        cnpj: ord.user.cnpj,
         address: ord.user.address
       },
     }
