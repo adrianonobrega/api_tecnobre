@@ -3,7 +3,15 @@ import dotenv from 'dotenv/config'
 
 require('dotenv').config()
 
-export const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource(
+    process.env.NODE_ENV === "test" ? {
+        type: "sqlite",
+        database: ":memory:",
+        synchronize: true,
+        entities: ["src/entities/*.ts"]
+    }
+    : {
+    
     type: "postgres",
 
     host: "localhost",

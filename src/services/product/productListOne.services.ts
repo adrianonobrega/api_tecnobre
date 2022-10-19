@@ -14,7 +14,7 @@ export const productListOneServices = async (id: string) => {
   })
 
   if (!product) {
-    throw new Error("Store not found")
+    throw new Error("Product not found")
   }
 
   return product
